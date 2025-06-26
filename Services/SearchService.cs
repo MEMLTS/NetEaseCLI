@@ -18,6 +18,7 @@ public static class SearchService
             csrf_token = ""
         };
         var sign = SignServer.SignServer.Sign(e);
+
         var from = new FormUrlEncodedContent([
                 new KeyValuePair<string, string>("params", sign.Param),
                 new KeyValuePair<string, string>("encSecKey", sign.EncSecKey)
@@ -29,8 +30,9 @@ public static class SearchService
             {
                 Content = from
             };
-
+        
         var result = await HttpClient.SendAsync(request);
+
         return await result.Content.ReadAsStringAsync();
     }
 
