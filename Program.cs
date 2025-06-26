@@ -4,6 +4,6 @@ using Spectre.Console;
 
 AnsiConsole.Markup("[green]Hello[/] [blue]World[/]!");
 
-var data = await SearchService.SearchSong("创作者之死");
+var data = await SearchService.SearchSong("创作者之死",5);
 
 Console.WriteLine(data);

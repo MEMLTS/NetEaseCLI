@@ -9,12 +9,13 @@ public static class SearchService
     /// 搜索歌曲
     /// </summary>
     /// <param name="keyword"></param>
-    public static async Task<string> SearchSong(string keyword)
+    /// <param name="limit"></param>
+    public static async Task<string> SearchSong(string keyword,int limit = 10)
     {
         object e = new
         {
             s = keyword,
-            limit = "1",
+            limit = Convert.ToString(limit),
             csrf_token = ""
         };
         var sign = SignServer.SignServer.Sign(e);
@@ -31,9 +32,18 @@ public static class SearchService
                 Content = from
             };
         
-        var result = await HttpClient.SendAsync(request);
+        try
+        {
+            var result = await HttpClient.SendAsync(request);
+            return await result.Content.ReadAsStringAsync();
+        }
+        catch (HttpRequestException httpRequestException)
+        {
+            Console.WriteLine($"Error: {httpRequestException.Message}");
+            Console.WriteLine("Please check your network connection.");
+        }
 
-        return await result.Content.ReadAsStringAsync();
+        throw new Exception("Http Error");
     }
 
     /// <summary>
