@@ -1,9 +1,22 @@
 namespace NetEaseCLI.Model
 {
+    public class SearchResult
+    {
+        public int Code { get; set; }
+        public SearchResultData Result { get; set; } = new();
+    }
+
+    public class SearchResultData
+    {
+        public List<SongModel> Songs { get; set; } = [];
+        public List<AlbumModel> Albums { get; set; } = [];
+        public List<string> Order { get; set; } = [];
+    }
+    
     /// <summary>
     /// 歌曲信息模型
     /// </summary>
-    public abstract class SongModel
+    public class SongModel
     {
         /// <summary>歌曲ID</summary>
         public int? Id { get; set; }
@@ -45,13 +58,13 @@ namespace NetEaseCLI.Model
         public string? RUrl { get; set; }
         
         /// <summary>标记</summary>
-        public int? Mark { get; set; }
+        public long? Mark { get; set; }
     }
     
     /// <summary>
     /// 歌手信息模型
     /// </summary>
-    public abstract class ArtistModel
+    public class ArtistModel
     {
         /// <summary>歌手ID</summary>
         public int? Id { get; set; }
@@ -69,7 +82,7 @@ namespace NetEaseCLI.Model
         public int? AlbumSize { get; set; }
         
         /// <summary>图片ID</summary>
-        public int? PicId { get; set; }
+        public long? PicId { get; set; }
         
         /// <summary>粉丝团</summary>
         public object? FansGroup { get; set; }
@@ -87,7 +100,7 @@ namespace NetEaseCLI.Model
     /// <summary>
     /// 专辑信息模型
     /// </summary>
-    public abstract class AlbumModel
+    public class AlbumModel
     {
         /// <summary>专辑ID</summary>
         public int? Id { get; set; }
@@ -111,9 +124,9 @@ namespace NetEaseCLI.Model
         public int? Status { get; set; }
         
         /// <summary>图片ID</summary>
-        public int? PicId { get; set; }
+        public long? PicId { get; set; }
         
         /// <summary>标记</summary>
-        public int? Mark { get; set; }
+        public long? Mark { get; set; }
     }
 }

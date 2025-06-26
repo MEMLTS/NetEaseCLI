@@ -1,4 +1,6 @@
+using System.Text.Json;
 using NetEaseCLI.Model;
+
 namespace NetEaseCLI.Services;
 
 public static class SearchService
@@ -10,7 +12,7 @@ public static class SearchService
     /// </summary>
     /// <param name="keyword"></param>
     /// <param name="limit"></param>
-    public static async Task<string> SearchSong(string keyword,int limit = 10)
+    public static async Task<SearchResult?> SearchSong(string keyword,int limit = 10)
     {
         object e = new
         {
@@ -35,7 +37,12 @@ public static class SearchService
         try
         {
             var result = await HttpClient.SendAsync(request);
-            return await result.Content.ReadAsStringAsync();
+            var data = await result.Content.ReadAsStringAsync();
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true // 忽略大小写
+            };
+            return JsonSerializer.Deserialize<SearchResult>(data, options);
         }
         catch (HttpRequestException httpRequestException)
         {
