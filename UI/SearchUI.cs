@@ -16,11 +16,25 @@ public sealed class SearchUi : Window
     {
         Title = $"NetEaseCli Search ({Application.QuitKey} to quit)";
 
-        var searchLabel = new Label() { Text = "Search: ", X = 2, Y = 1 };
-        var searchTextField = new TextField() { X = Pos.Right(searchLabel) + 1, Y = Pos.Top(searchLabel), Width = 30 };
+        var searchLabel = new Label()
+        {
+            Text = "Search: ", 
+            X = 2, 
+            Y = 1
+        };
+        var searchTextField = new TextField()
+        {
+            X = Pos.Right(searchLabel) + 1, 
+            Y = Pos.Top(searchLabel), 
+            Width = 30
+        };
         var searchButton = new Button()
-            { Text = "Search", X = Pos.Right(searchTextField) + 2, Y = Pos.Top(searchLabel) };
-
+            { 
+                Text = "Search", 
+                X = Pos.Right(searchTextField) + 2, 
+                Y = Pos.Top(searchLabel)
+            };
+        
         // 初始化表结构
         _table.Columns.Add("#");
         _table.Columns.Add("Song Name");

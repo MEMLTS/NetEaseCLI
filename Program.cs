@@ -1,6 +1,6 @@
 ﻿using NetEaseCLI.UI;
 using Terminal.Gui.App;
 
-Application.Run<SearchUi>().Dispose();
+Application.Run<PlayerUi>().Dispose();
 
 Application.Shutdown();
