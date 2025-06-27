@@ -10,10 +10,10 @@
   <ItemGroup>
     <PackageReference Include="Jint" Version="4.2.2" />
     <PackageReference Include="QRCoder" Version="1.6.0" />
-    <PackageReference Include="Spectre.Console" Version="0.50.1-preview.0.20" />
       <None Update="Services/SignServer/*.js">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
+      <PackageReference Include="Terminal.Gui" Version="2.0.0-develop.4520" />
   </ItemGroup>
 
   <ItemGroup>

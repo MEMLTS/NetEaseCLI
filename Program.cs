@@ -1,9 +1,6 @@
-﻿using NetEaseCLI.Services;
-using Spectre.Console;
+﻿using NetEaseCLI.UI;
+using Terminal.Gui.App;
 
+Application.Run<SearchUi>().Dispose();
 
-AnsiConsole.Markup("[green]Hello[/] [blue]World[/]!");
-
-var data = await SearchService.SearchSong("创作者之死",5);
-
-Console.WriteLine(data);
+Application.Shutdown();
